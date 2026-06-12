@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Love You A Lot Kanna ❤️</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:linear-gradient(135deg,#fff5f8,#ffe4ef);
+overflow:hidden;
+}
+
+.page{
+display:none;
+height:100vh;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+text-align:center;
+padding:20px;
+}
+
+.active{
+display:flex;
+}
+
+h1,h2{
+color:#ff5c99;
+}
+
+button{
+padding:12px 25px;
+border:none;
+border-radius:25px;
+background:#ff8fba;
+color:white;
+cursor:pointer;
+font-size:18px;
+}
+
+.card{
+background:white;
+padding:25px;
+border-radius:20px;
+max-width:800px;
+max-height:60vh;
+overflow:auto;
+box-shadow:0 0 15px rgba(0,0,0,0.1);
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(5,90px);
+gap:12px;
+}
+
+.box{
+background:white;
+border:2px solid #ffb6d5;
+padding:25px;
+border-radius:15px;
+cursor:pointer;
+font-weight:bold;
+transition:0.3s;
+}
+
+.box:hover{
+transform:scale(1.08);
+}
+
+.popup{
+display:none;
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+background:white;
+padding:25px;
+border-radius:20px;
+z-index:999;
+box-shadow:0 0 20px rgba(0,0,0,.2);
+}
+
+.heart{
+position:absolute;
+animation:float 10s linear infinite;
+}
+
+@keyframes float{
+from{
+transform:translateY(100vh);
+}
+to{
+transform:translateY(-120px);
+}
+}
+
+.confetti{
+position:fixed;
+top:-20px;
+animation:fall 3s linear forwards;
+}
+
+@keyframes fall{
+to{
+transform:translateY(110vh) rotate(720deg);
+}
+}
+
+.love{
+font-size:50px;
+animation:pulse 1.5s infinite;
+color:#ff4d94;
+}
+
+@keyframes pulse{
+50%{
+transform:scale(1.1);
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Background Music -->
+
+<audio autoplay loop controls>
+<source src="romantic.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Popup -->
+
+<div id="popup" class="popup">
+
+<h2 id="pt"></h2>
+
+<p id="pc"></p>
+
+<button onclick="closePop()">
+Close
+</button>
+
+</div>
+
+<!-- PAGE 1 -->
+
+<div class="page active" id="p1">
+
+<h1>💖 Welcome Kanna 💖</h1>
+
+<button onclick="go('p2')">
+Click Here ❤️
+</button>
+
+</div>
+
+<!-- PAGE 2 LOVE LETTER -->
+
+<div class="page" id="p2">
+
+<h1>💌 My Love Letter To Kanna</h1>
+
+<div class="card">
+
+<p>
+
+Write your complete love letter here.
+
+Tell him:
+
+❤️ Why you love him
+
+❤️ Your favourite memories
+
+❤️ Future dreams
+
+❤️ Everything from your heart
+
+</p>
+
+</div>
+
+<br>
+
+<button onclick="go('p3')">
+Next ➜
+</button>
+
+</div>
+
+<!-- PAGE 3 SONGS -->
+
+<div class="page" id="p3">
+
+<h1>🎵 Our Favourite Songs 🎵</h1>
+
+<div class="grid">
+
+<div class="box" onclick="song('Song 1 Name')">1</div>
+<div class="box" onclick="song('Song 2 Name')">2</div>
+<div class="box" onclick="song('Song 3 Name')">3</div>
+<div class="box" onclick="song('Song 4 Name')">4</div>
+<div class="box" onclick="song('Song 5 Name')">5</div>
+<div class="box" onclick="song('Song 6 Name')">6</div>
+<div class="box" onclick="song('Song 7 Name')">7</div>
+<div class="box" onclick="song('Song 8 Name')">8</div>
+<div class="box" onclick="song('Song 9 Name')">9</div>
+<div class="box" onclick="song('Song 10 Name')">10</div>
+
+</div>
+
+<br>
+
+<button onclick="go('p4')">
+Next ➜
+</button>
+
+</div>
+
+<!-- PAGE 4 -->
+
+<div class="page" id="p4">
+
+<h1>🌷 What You Should Change 🌷</h1>
+
+<div class="grid">
+
+<div class="box" onclick="msg('Change','Anger Issues')">1</div>
+
+<div class="box" onclick="msg('Change','Overthinking')">2</div>
+
+<div class="box" onclick="msg('Change','Late Replies')">3</div>
+
+<div class="box" onclick="msg('Change','Sleep Earlier')">4</div>
+
+<div class="box" onclick="msg('Change','Take Care Of Yourself')">5</div>
+
+</div>
+
+<br>
+
+<button onclick="go('p5')">
+Next ➜
+</button>
+
+</div>
+
+<!-- PAGE 5 -->
+
+<div class="page" id="p5">
+
+<h1>🎁 Things I Need From You 🎁</h1>
+
+<div class="grid">
+
+<div class="box" onclick="msg('Surprise','More Hugs ❤️')">1</div>
+
+<div class="box" onclick="msg('Surprise','Cute Texts 💌')">2</div>
+
+<div class="box" onclick="msg('Surprise','Movie Date 🍿')">3</div>
+
+<div class="box" onclick="msg('Surprise','Long Walk 🌸')">4</div>
+
+<div class="box" onclick="msg('Surprise','More Selfies 📸')">5</div>
+
+<div class="box" onclick="msg('Surprise','Trust 🤍')">6</div>
+
+<div class="box" onclick="msg('Surprise','Patience ✨')">7</div>
+
+<div class="box" onclick="msg('Surprise','Support 💖')">8</div>
+
+<div class="box" onclick="msg('Surprise','More Calls ☎️')">9</div>
+
+<div class="box" onclick="msg('Surprise','Forever Together 💕')">10</div>
+
+</div>
+
+<br>
+
+<button onclick="go('p6')">
+Final Page ➜
+</button>
+
+</div>
+
+<!-- PAGE 6 -->
+
+<div class="page" id="p6">
+
+<div class="love">
+❤️ LOVE YOU A LOT KANNA ❤️
+</div>
+
+<h2>
+Thank You For Every Memory
+</h2>
+
+<p>
+Forever & Always 💖
+</p>
+
+<p>
+🌸 🤍 💖 🤍 🌸
+</p>
+
+</div>
+
+<script>
+
+function go(id){
+
+document.querySelectorAll('.page').forEach(p=>{
+p.classList.remove('active');
+});
+
+document.getElementById(id).classList.add('active');
+
+}
+
+function msg(title,content){
+
+document.getElementById('pt').innerText=title;
+
+document.getElementById('pc').innerText=content;
+
+document.getElementById('popup').style.display='block';
+
+}
+
+function closePop(){
+
+document.getElementById('popup').style.display='none';
+
+}
+
+function song(name){
+
+confetti();
+
+msg(
+'🎵 Favourite Song',
+name
+);
+
+}
+
+function confetti(){
+
+for(let i=0;i<60;i++){
+
+let e=document.createElement('div');
+
+e.className='confetti';
+
+e.innerHTML=['💖','✨','🎊','🌸'][Math.floor(Math.random()*4)];
+
+e.style.left=Math.random()*100+'vw';
+
+document.body.appendChild(e);
+
+setTimeout(()=>{
+e.remove();
+},3000);
+
+}
+
+}
+
+setInterval(()=>{
+
+let h=document.createElement('div');
+
+h.className='heart';
+
+h.innerHTML=Math.random()>0.5?'💖':'💕';
+
+h.style.left=Math.random()*100+'vw';
+
+h.style.fontSize=(20+Math.random()*25)+'px';
+
+document.body.appendChild(h);
+
+setTimeout(()=>{
+h.remove();
+},10000);
+
+},300);
+
+</script>
+
+</body>
+</html>
